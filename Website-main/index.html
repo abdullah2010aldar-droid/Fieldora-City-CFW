@@ -1,0 +1,1916 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fieldora CFW</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Almarai:wght@400;700;800&family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#050a14;
+  --bg-soft:#0a1120;
+  --panel:#0c1526;
+  --panel-2:#0e1a30;
+  --line:#1b2a46;
+  --line-soft:#142138;
+  --blue:#2f7dff;
+  --blue-2:#57a2ff;
+  --blue-glow:rgba(47,125,255,.45);
+  --text:#eaf1ff;
+  --text-dim:#8ea3c7;
+  --text-faint:#5c7099;
+  --gold:#e8c76a;
+}
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Tajawal',sans-serif;
+  line-height:1.6;
+  overflow-x:hidden;
+}
+
+h1,h2,h3,.brand{
+  font-family:'Almarai','Tajawal',sans-serif;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+::selection{
+  background:var(--blue-glow);
+}
+
+/* ---------- BACKGROUND ---------- */
+
+.noise-glow{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:0;
+
+  background:
+    radial-gradient(
+      600px 400px at 15% 10%,
+      rgba(47,125,255,.10),
+      transparent 60%
+    ),
+    radial-gradient(
+      700px 500px at 85% 25%,
+      rgba(47,125,255,.08),
+      transparent 60%
+    );
+}
+
+/* ---------- NAVBAR ---------- */
+
+header{
+  position:sticky;
+  top:0;
+  z-index:50;
+
+  background:rgba(5,10,20,.85);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line-soft);
+}
+
+.nav-wrap{
+  max-width:1400px;
+  margin:0 auto;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  padding:14px 32px;
+}
+
+.brand-block{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.brand-name{
+  font-weight:800;
+  font-size:15px;
+  letter-spacing:1px;
+  color:var(--text);
+}
+
+.brand-name span{
+  color:var(--blue-2);
+}
+
+nav.links{
+  display:flex;
+  align-items:center;
+  gap:6px;
+
+  background:rgba(255,255,255,.02);
+  border:1px solid var(--line-soft);
+
+  padding:6px;
+  border-radius:14px;
+}
+
+nav.links a{
+  display:flex;
+  align-items:center;
+  gap:8px;
+
+  font-size:14.5px;
+  font-weight:700;
+  color:var(--text-dim);
+
+  padding:9px 16px;
+  border-radius:10px;
+
+  transition:all .2s ease;
+}
+
+nav.links a:hover{
+  color:var(--text);
+  background:rgba(255,255,255,.04);
+}
+
+nav.links a.active{
+  color:#fff;
+
+  background:linear-gradient(
+    180deg,
+    #1b4fce,
+    #14369b
+  );
+
+  box-shadow:
+    0 0 0 1px rgba(87,162,255,.4),
+    0 6px 16px rgba(31,90,220,.35);
+}
+
+nav.links svg{
+  width:16px;
+  height:16px;
+}
+
+.btn-join{
+  display:flex;
+  align-items:center;
+  gap:8px;
+
+  background:linear-gradient(
+    180deg,
+    #2f7dff,
+    #1a4fc9
+  );
+
+  color:#fff;
+  font-weight:800;
+  font-size:14.5px;
+
+  padding:12px 22px;
+  border-radius:12px;
+
+  box-shadow:
+    0 0 22px rgba(47,125,255,.45),
+    inset 0 1px 0 rgba(255,255,255,.25);
+
+  border:1px solid rgba(120,170,255,.5);
+
+  transition:
+    transform .15s ease,
+    box-shadow .15s ease;
+}
+
+.btn-join:hover{
+  transform:translateY(-2px);
+
+  box-shadow:
+    0 4px 30px rgba(47,125,255,.65);
+}
+
+.btn-join svg{
+  width:16px;
+  height:16px;
+}
+
+/* ---------- HERO ---------- */
+
+.hero{
+  position:relative;
+
+  padding:90px 32px 70px;
+
+  text-align:center;
+
+  background:
+    radial-gradient(
+      900px 500px at 50% -10%,
+      rgba(47,125,255,.18),
+      transparent 65%
+    ),
+    linear-gradient(
+      180deg,
+      #060b16 0%,
+      #050a14 60%,
+      #050a14 100%
+    );
+
+  border-bottom:1px solid var(--line-soft);
+
+  overflow:hidden;
+}
+
+.hero::before{
+  content:"";
+
+  position:absolute;
+  inset:0;
+
+  background-image:
+    repeating-linear-gradient(
+      90deg,
+      rgba(255,255,255,.025) 0 1px,
+      transparent 1px 90px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      rgba(255,255,255,.02) 0 1px,
+      transparent 1px 90px
+    );
+
+  mask-image:
+    radial-gradient(
+      700px 400px at 50% 30%,
+      black,
+      transparent 75%
+    );
+
+  opacity:.5;
+}
+
+.hero-inner{
+  position:relative;
+  z-index:2;
+}
+
+.logo-ring{
+  width:330px;
+  height:330px;
+
+  margin:0 auto 26px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  background:transparent;
+  border:none;
+  box-shadow:none;
+
+  position:relative;
+}
+
+.logo-ring img{
+  width:100%;
+  height:100%;
+
+  object-fit:contain;
+  display:block;
+
+  position:relative;
+  z-index:2;
+
+  filter:
+    drop-shadow(
+      0 0 12px rgba(47,125,255,.55)
+    );
+}
+
+.hero h1{
+  font-size:clamp(30px,5vw,46px);
+  font-weight:800;
+  letter-spacing:1px;
+
+  color:#fff;
+
+  margin-bottom:10px;
+
+  text-shadow:
+    0 0 30px rgba(47,125,255,.35);
+}
+
+.hero p.sub{
+  color:var(--text-dim);
+  font-size:17px;
+  font-weight:500;
+
+  margin-bottom:42px;
+}
+
+.quick-cards{
+  max-width:1180px;
+  margin:0 auto;
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(4,1fr);
+
+  gap:18px;
+}
+
+.qcard{
+  display:flex;
+  align-items:center;
+  gap:14px;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(20,33,56,.6),
+      rgba(10,17,32,.6)
+    );
+
+  border:1px solid var(--line);
+
+  padding:18px 20px;
+
+  border-radius:16px;
+
+  text-align:right;
+
+  transition:
+    transform .2s ease,
+    border-color .2s ease,
+    box-shadow .2s ease;
+}
+
+.qcard:hover{
+  transform:translateY(-4px);
+
+  border-color:
+    rgba(87,162,255,.5);
+
+  box-shadow:
+    0 10px 28px rgba(47,125,255,.18);
+}
+
+.qicon{
+  width:42px;
+  height:42px;
+
+  border-radius:11px;
+
+  flex:0 0 auto;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  background:
+    rgba(47,125,255,.12);
+
+  border:
+    1px solid rgba(87,162,255,.3);
+
+  color:var(--blue-2);
+}
+
+.qicon svg{
+  width:20px;
+  height:20px;
+}
+
+.qcard .qtitle{
+  font-weight:800;
+  font-size:15px;
+
+  color:#fff;
+
+  margin-bottom:2px;
+}
+
+.qcard .qdesc{
+  font-size:12.5px;
+  color:var(--text-faint);
+}
+
+/* ---------- MAIN ---------- */
+
+main{
+  max-width:1400px;
+  margin:0 auto;
+
+  padding:54px 32px 100px;
+
+  display:grid;
+
+  grid-template-columns:
+    .85fr 1.3fr;
+
+  gap:26px;
+
+  position:relative;
+  z-index:1;
+
+  align-items:start;
+}
+
+.panel{
+  background:
+    linear-gradient(
+      180deg,
+      rgba(13,21,38,.7),
+      rgba(8,13,24,.7)
+    );
+
+  border:1px solid var(--line-soft);
+
+  border-radius:22px;
+
+  padding:30px;
+}
+
+.panel-head{
+  margin-bottom:26px;
+}
+
+.eyebrow{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  gap:10px;
+
+  font-weight:800;
+  font-size:24px;
+
+  color:#fff;
+
+  margin-bottom:8px;
+}
+
+.eyebrow svg{
+  width:24px;
+  height:24px;
+
+  color:var(--blue-2);
+}
+
+.panel-head p{
+  text-align:center;
+
+  color:var(--text-faint);
+
+  font-size:14px;
+}
+
+/* ---------- CREATORS ---------- */
+
+.creator-grid{
+  display:grid;
+
+  grid-template-columns:
+    repeat(3,1fr);
+
+  gap:14px;
+}
+
+.creator-card{
+  background:rgba(255,255,255,.02);
+
+  border:1px solid var(--line-soft);
+
+  border-radius:16px;
+
+  padding:20px 12px;
+
+  text-align:center;
+
+  transition:
+    border-color .2s ease,
+    transform .2s ease;
+}
+
+.creator-card:hover{
+  border-color:
+    rgba(87,162,255,.45);
+
+  transform:translateY(-3px);
+}
+
+.avatar{
+  width:64px;
+  height:64px;
+
+  border-radius:0;
+
+  margin:0 auto 12px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  background:
+    radial-gradient(
+      circle at 35% 30%,
+      #16253f,
+      #060b16
+    );
+
+  border:1px solid var(--line);
+
+  font-weight:800;
+  font-size:20px;
+
+  color:var(--blue-2);
+}
+
+.creator-name{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  gap:5px;
+
+  font-weight:800;
+  font-size:14px;
+
+  color:#fff;
+
+  margin-bottom:10px;
+}
+
+.creator-name svg{
+  width:14px;
+  height:14px;
+
+  color:var(--blue-2);
+}
+
+.watch-btn{
+  display:inline-flex;
+  align-items:center;
+
+  gap:6px;
+
+  font-size:12.5px;
+  font-weight:700;
+
+  color:var(--blue-2);
+
+  background:
+    rgba(47,125,255,.1);
+
+  border:
+    1px solid rgba(87,162,255,.3);
+
+  padding:7px 14px;
+
+  border-radius:9px;
+
+  transition:
+    background .2s ease;
+}
+
+.watch-btn:hover{
+  background:
+    rgba(47,125,255,.22);
+}
+
+.watch-btn svg{
+  width:12px;
+  height:12px;
+}
+
+.see-all{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  gap:8px;
+
+  margin-top:16px;
+
+  padding:13px;
+
+  border-radius:12px;
+
+  border:
+    1px dashed var(--line);
+
+  font-weight:700;
+  font-size:13.5px;
+
+  color:var(--text-dim);
+
+  transition:all .2s ease;
+}
+
+.see-all:hover{
+  border-color:var(--blue-2);
+  color:#fff;
+}
+
+.see-all svg{
+  width:15px;
+  height:15px;
+}
+
+/* ---------- RULES ---------- */
+
+.rule-item{
+  border:
+    1px solid var(--line-soft);
+
+  border-radius:14px;
+
+  margin-bottom:10px;
+
+  overflow:hidden;
+
+  background:
+    rgba(255,255,255,.015);
+
+  transition:
+    border-color .2s ease;
+}
+
+.rule-item.open{
+  border-color:
+    rgba(87,162,255,.45);
+}
+
+.rule-head{
+  display:flex;
+  align-items:center;
+
+  gap:14px;
+
+  padding:16px 18px;
+
+  cursor:pointer;
+
+  user-select:none;
+}
+
+.chev{
+  width:16px;
+  height:16px;
+
+  color:var(--text-faint);
+
+  flex:0 0 auto;
+
+  transition:
+    transform .25s ease;
+}
+
+.rule-item.open .chev{
+  transform:rotate(180deg);
+
+  color:var(--blue-2);
+}
+
+.r-icon{
+  width:38px;
+  height:38px;
+
+  border-radius:10px;
+
+  flex:0 0 auto;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  background:
+    rgba(47,125,255,.1);
+
+  border:
+    1px solid rgba(87,162,255,.25);
+
+  color:var(--blue-2);
+}
+
+.r-icon svg{
+  width:18px;
+  height:18px;
+}
+
+.r-text{
+  flex:1;
+  min-width:0;
+}
+
+.r-title{
+  font-weight:800;
+  font-size:15px;
+
+  color:#fff;
+
+  margin-bottom:2px;
+}
+
+.r-desc{
+  font-size:12.5px;
+
+  color:var(--text-faint);
+}
+
+.r-num{
+  font-family:'Almarai',sans-serif;
+
+  font-weight:800;
+  font-size:15px;
+
+  color:var(--blue-2);
+
+  background:
+    rgba(47,125,255,.1);
+
+  border:
+    1px solid rgba(87,162,255,.25);
+
+  padding:6px 12px;
+
+  border-radius:9px;
+
+  flex:0 0 auto;
+}
+
+.rule-body{
+  max-height:0;
+
+  overflow:hidden;
+
+  transition:
+    max-height .35s ease;
+}
+
+.rule-item.open .rule-body{
+  max-height:1500px;
+}
+
+.rule-body-inner{
+  padding:
+    0 18px 20px 18px;
+
+  padding-right:70px;
+
+  color:var(--text-dim);
+
+  font-size:13.5px;
+}
+
+.rule-body-inner ul{
+  list-style:none;
+
+  display:flex;
+  flex-direction:column;
+
+  gap:8px;
+}
+
+.rule-body-inner li{
+  display:flex;
+
+  align-items:flex-start;
+
+  gap:8px;
+}
+
+.rule-body-inner li::before{
+  content:"›";
+
+  color:var(--blue-2);
+
+  font-weight:800;
+
+  transform:rotate(180deg);
+
+  flex:0 0 auto;
+
+  margin-top:1px;
+}
+
+/* ---------- FOOTER ---------- */
+
+footer{
+  text-align:center;
+
+  padding:30px;
+
+  color:var(--text-faint);
+
+  font-size:12.5px;
+
+  border-top:
+    1px solid var(--line-soft);
+}
+
+footer b{
+  color:var(--blue-2);
+}
+
+/* ---------- RESPONSIVE ---------- */
+
+@media(max-width:980px){
+
+  main{
+    grid-template-columns:1fr;
+  }
+
+  .quick-cards{
+    grid-template-columns:
+      repeat(2,1fr);
+  }
+
+  nav.links{
+    display:none;
+  }
+
+  .creator-grid{
+    grid-template-columns:
+      repeat(2,1fr);
+  }
+}
+
+@media(max-width:560px){
+
+  .quick-cards{
+    grid-template-columns:1fr;
+  }
+
+  .nav-wrap{
+    padding:12px 16px;
+  }
+
+  .creator-grid{
+    grid-template-columns:
+      1fr 1fr;
+  }
+
+  .rule-body-inner{
+    padding-right:18px;
+  }
+
+  .logo-ring{
+    width:260px;
+    height:260px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="noise-glow"></div>
+
+<header>
+  <div class="nav-wrap">
+
+    <div class="brand-block">
+      <div class="brand-name">
+        Fieldora <span>ROLEPLAY</span>
+      </div>
+    </div>
+
+    <!-- NAVIGATION -->
+    <nav class="links">
+
+      <!-- الرئيسية تبدأ Active -->
+      <a href="#home" class="active">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 12l9-9 9 9M5 10v10h14V10"/>
+        </svg>
+        الرئيسية
+      </a>
+
+      <a href="#rules">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M9 3h6v18H9zM4 8h4v13H4zM16 5h4v16h-4z"/>
+        </svg>
+        القوانين
+      </a>
+
+      <a href="#creators">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>
+        </svg>
+        صناع المحتوى
+      </a>
+
+      <a
+        href="https://discord.gg/mS34tX6DHB"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="9" cy="12" r="1"/>
+          <circle cx="15" cy="12" r="1"/>
+          <path d="M7.5 7.5c3-1 6-1 9 0M6 16.5c4 1.2 8 1.2 12 0M17 15.5l1.5 3M7 15.5l-1.5 3"/>
+        </svg>
+        الديسكورد
+      </a>
+
+    </nav>
+
+<a href="fivem://connect/82.47.101.46" class="btn-join">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <rect x="2" y="7" width="20" height="12" rx="4"/>
+    <path d="M7 12h.01M11 12h4"/>
+  </svg>
+  دخول السيرفر
+</a>
+
+  </div>
+</header>
+
+
+<!-- ==================== HOME ==================== -->
+
+<section class="hero" id="home">
+
+  <div class="hero-inner">
+
+    <div class="logo-ring">
+      <img src="logoFieldora.png" alt="Fieldora">
+    </div>
+
+    <h1>Fieldora CFW</h1>
+
+    <p class="sub">
+      حياكم الله في امتع سيرفر في فايف ام
+    </p>
+
+    <div class="quick-cards">
+
+      <!-- القوانين -->
+      <a href="#rules" class="qcard">
+
+        <div class="qicon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M9 3h6v18H9zM4 8h4v13H4zM16 5h4v16h-4z"/>
+          </svg>
+        </div>
+
+        <div>
+          <div class="qtitle">القوانين</div>
+          <div class="qdesc">اقرأ جميع القوانين</div>
+        </div>
+
+      </a>
+
+
+      <!-- دخول السيرفر -->
+      <a href="fivem://connect/IP:PORT" class="qcard">
+
+        <div class="qicon">
+
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="7" width="20" height="12" rx="4"/>
+            <path d="M7 12h.01M11 12h4"/>
+          </svg>
+
+        </div>
+
+        <div>
+          <div class="qtitle">دخول السيرفر</div>
+          <div class="qdesc">اضغط للدخول الآن</div>
+        </div>
+
+      </a>
+
+
+      <!-- الديسكورد -->
+      <a
+        href="https://discord.gg/mS34tX6DHB"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="qcard"
+      >
+
+        <div class="qicon">
+
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="9" cy="12" r="1"/>
+            <circle cx="15" cy="12" r="1"/>
+            <path d="M7.5 7.5c3-1 6-1 9 0M6 16.5c4 1.2 8 1.2 12 0M17 15.5l1.5 3M7 15.5l-1.5 3"/>
+          </svg>
+
+        </div>
+
+        <div>
+          <div class="qtitle">الديسكورد</div>
+          <div class="qdesc">انضم إلى مجتمعنا</div>
+        </div>
+
+      </a>
+
+
+      <!-- صناع المحتوى -->
+      <a href="#creators" class="qcard">
+
+        <div class="qicon">
+
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>
+          </svg>
+
+        </div>
+
+        <div>
+          <div class="qtitle">صناع المحتوى</div>
+          <div class="qdesc">شاهد أفضل صناع المحتوى</div>
+        </div>
+
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ==================== MAIN ==================== -->
+
+<main>
+
+
+<!-- ==================== CREATORS ==================== -->
+
+<div class="panel" id="creators">
+
+  <div class="panel-head">
+
+    <div class="eyebrow">
+
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <path d="M5 16L3 6l5 4 4-6 4 6 5-4-2 10H5zm0 2h14v2H5v-2z"/>
+      </svg>
+
+      صناع المحتوى
+
+    </div>
+
+    <p>
+      أفضل صناع المحتوى في سيرفر Fieldora
+    </p>
+
+  </div>
+
+
+  <div class="creator-grid">
+
+
+    <!-- HILR -->
+
+    <div class="creator-card">
+
+      <div class="avatar">
+        HILR
+      </div>
+
+      <div class="creator-name">
+
+        HILR
+
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2l2.4 2.6 3.5-.7.7 3.5L22 9l-2.6 2.4L22 15l-3.4.2-.7 3.5-3.5-.7L12 20.4 9.6 18l-3.5.7-.7-3.5L2 15l2.6-2.6L2 9l3.4-2.2.7-3.5 3.5.7L12 2z"/>
+        </svg>
+
+      </div>
+
+      <a
+        href="https://kick.com/hilrshild"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="watch-btn"
+      >
+
+        مشاهدة
+
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/>
+        </svg>
+
+      </a>
+
+    </div>
+
+
+    <!-- O7 -->
+
+    <div class="creator-card">
+
+      <div class="avatar">
+        O7
+      </div>
+
+      <div class="creator-name">
+
+        O7
+
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2l2.4 2.6 3.5-.7.7 3.5L22 9l-2.6 2.4L22 15l-3.4.2-.7 3.5-3.5-.7L12 20.4 9.6 18l-3.5.7-.7-3.5L2 15l2.6-2.6L2 9l3.4-2.2.7-3.5 3.5.7L12 2z"/>
+        </svg>
+
+      </div>
+
+      <a
+        href="https://kick.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="watch-btn"
+      >
+
+        مشاهدة
+
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/>
+        </svg>
+
+      </a>
+
+    </div>
+
+
+    <!-- SOON 1 -->
+
+    <div class="creator-card">
+
+      <div class="avatar">
+        Soon!
+      </div>
+
+      <div class="creator-name">
+
+        Soon!
+
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2l2.4 2.6 3.5-.7.7 3.5L22 9l-2.6 2.4L22 15l-3.4.2-.7 3.5-3.5-.7L12 20.4 9.6 18l-3.5.7-.7-3.5L2 15l2.6-2.6L2 9l3.4-2.2.7-3.5 3.5.7L12 2z"/>
+        </svg>
+
+      </div>
+
+      <a
+        href="https://kick.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="watch-btn"
+      >
+
+        مشاهدة
+
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/>
+        </svg>
+
+      </a>
+
+    </div>
+
+
+    <!-- SOON 2 -->
+
+    <div class="creator-card">
+
+      <div class="avatar">
+        Soon!
+      </div>
+
+      <div class="creator-name">
+
+        Soon!
+
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2l2.4 2.6 3.5-.7.7 3.5L22 9l-2.6 2.4L22 15l-3.4.2-.7 3.5-3.5-.7L12 20.4 9.6 18l-3.5.7-.7-3.5L2 15l2.6-2.6L2 9l3.4-2.2.7-3.5 3.5.7L12 2z"/>
+        </svg>
+
+      </div>
+
+      <a
+        href="https://kick.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="watch-btn"
+      >
+
+        مشاهدة
+
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/>
+        </svg>
+
+      </a>
+
+    </div>
+
+
+    <!-- SOON 3 -->
+
+    <div class="creator-card">
+
+      <div class="avatar">
+        Soon!
+      </div>
+
+      <div class="creator-name">
+
+        Soon!
+
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2l2.4 2.6 3.5-.7.7 3.5L22 9l-2.6 2.4L22 15l-3.4.2-.7 3.5-3.5-.7L12 20.4 9.6 18l-3.5.7-.7-3.5L2 15l2.6-2.6L2 9l3.4-2.2.7-3.5 3.5.7L12 2z"/>
+        </svg>
+
+      </div>
+
+      <a
+        href="https://kick.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="watch-btn"
+      >
+
+        مشاهدة
+
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/>
+        </svg>
+
+      </a>
+
+    </div>
+
+
+    <!-- SOON 4 -->
+
+    <div class="creator-card">
+
+      <div class="avatar">
+        Soon!
+      </div>
+
+      <div class="creator-name">
+
+        Soon!
+
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2l2.4 2.6 3.5-.7.7 3.5L22 9l-2.6 2.4L22 15l-3.4.2-.7 3.5-3.5-.7L12 20.4 9.6 18l-3.5.7-.7-3.5L2 15l2.6-2.6L2 9l3.4-2.2.7-3.5 3.5.7L12 2z"/>
+        </svg>
+
+      </div>
+
+      <a
+        href="https://kick.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="watch-btn"
+      >
+
+        مشاهدة
+
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/>
+        </svg>
+
+      </a>
+
+    </div>
+
+  </div>
+
+
+  <a
+    href="https://kick.com"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="see-all"
+  >
+
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>
+    </svg>
+
+    عرض جميع صناع المحتوى
+
+  </a>
+
+</div>
+
+
+<!-- ==================== RULES ==================== -->
+
+<div class="panel" id="rules">
+
+  <div class="panel-head">
+
+    <div class="eyebrow">
+
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M12 3v18M5 7l-3 6a4 4 0 008 0l-3-6M19 7l-3 6a4 4 0 008 0l-3-6M5 7h4M19 7h-4M8 21h8"/>
+      </svg>
+
+      القوانين
+
+    </div>
+
+    <p>
+     الرجاء قرائت القوانين للحفاظ على سلامت العب
+    </p>
+
+  </div>
+
+  <div class="rules-list" id="rulesList"></div>
+
+</div>
+
+</main>
+
+
+<!-- ==================== FOOTER ==================== -->
+
+<footer>
+
+  <b>Fieldora CFW</b>
+
+  — جميع الحقوق محفوظة © 2025.
+  اللعب على سيرفرنا يعني موافقتك التامة على القوانين.
+
+</footer>
+
+
+<script>
+
+/* =====================================================
+   RULES
+===================================================== */
+
+const RULES = [
+
+  {
+    icon: `
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+        <path d="M14 2v6h6M8 13h8M8 17h8M8 9h2"/>
+      </svg>
+    `,
+
+    title:'القوانين العامة',
+
+    desc:'جميع القوانين العامة',
+
+    num:'01',
+
+    items:[
+      '✦ العمر المسموح لدخول السيرفر: 15 سنة فما فوق.',
+      '✦ ممنوع استخدام أي شخصية افتراضية إلا من خلال المتجر فقط.',
+      '✦ يمنع الدخول من أجهزة غير جهازك الشخصي (مثل مقاهي الإنترنت أو مراكز الألعاب).',
+      '✦ يحق لك امتلاك شخصيتان فقط , لزياده تكت المتجر',
+      '🎥 اللعب والبث',
+      '✦ ممنوع الستريم سنايب أو متابعة البثوث أثناء اللعب (عقوبتها شديدة).',
+      '✦ ممنوع التواجد في الديسكورد أو التواصل الخارجي مع لاعبين آخرين أثناء اللعب.',
+      '🧑🏾‍💼 القوانين العامة داخل السيرفر',
+      '✦ ممنوع الاعتداء على البوتات (يعتبرون مواطنين).',
+      '✦ ممنوع طلب تعويض عند خسارة أموالك أو أغراضك بسبب التحلل أو المستشفى.',
+      '✦ ممنوع الكتابة خارج “الرول بلاي” في تطبيق تويتر، ويمكن الكتابة فقط في الأمور الداخلة في إطار التمثيل وتقمص الشخصيات والسيناريوهات والأمور المكملة لها.',
+      '✦ يمنع القذف، الشتم، الطائفية، السياسة، الدين، أو القبلية (العقوبة: باند نهائي).',
+      '✦ يمنع استخدام كلمات غير مفهومة، مشفرة، أو سب مبطن.',
+      '✦ يمنع استغلال خدمات الجوال (مثل طلب تاكسي أو خدمات) بهدف الخطف أو القتل.',
+      '✦ يمنع مشاركة أي من حساباتك أو معلوماتك الشخصية (سناب، إنستا، ستيم، ديسكورد... إلخ) مع أي شخص (العقوبة: باند نهائي).',
+      '✦ يمنع حمل شخصين في نفس الوقت (حمل + سحب) مهما كانت الأسباب.',
+      '🚗 القيادة',
+      '✦ القيادة يجب أن تكون واقعية:',
+      '✦ لا سرعة مفرطة بدون سبب.',
+      '✦ لا قطع إشارات عشوائي.',
+      '✦ لا تهور بدون داعٍ.',
+      '✦ مخالفة هذه القوانين = تحذير أو باند.',
+      '✦ يمنع عليك عدم تقدير حياتك وحيات اي شخص.',
+      'ممنوع القتل العشوئي.',
+      '✦ممنوع استعمال المركبه كسلاح.',
+      '✦ممنوع الميتا قيمنق وهو الحصول على معلومة من خارج السيرفر.',
+      '✦ممنوع استخدام الوسائل غير موجودة في اللعبة للحصول على ميزة أو عدم التوافق مع العالم بطريقة معقولة وبشكل واقعي.',
+      '✦فيحال اغمائك ومساعدتك يمكنك التذكر فيحال تم اغمائك واسقاطك لاتتذكر المتسبب كذالك وش صار وانت مصقط.',
+      '✦المناطق الامنة هيا جميع الناطق الحكومية كذالك يوجد حدودها في الدسكورد.',
+      '✦ تنبيه مهم: جميع القوانين قابلة لتعديل كذالك  يحق للرقابة التعامل مع اي شخص او موقف او مخالفة حتى في حال عدم وجود القانون بشكل صريح.(القوانين فقط مقدمة لطريقة اللعب)',
+    ]
+  },
+
+
+  {
+icon: `
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 3a8 8 0 0 0-8 8c0 3.2 1.9 6 4.7 7.3V21h6.6v-2.7C17.1 17 20 14.2 20 11a8 8 0 0 0-8-8z"/>
+    <circle cx="9" cy="11" r="1.5"/>
+    <circle cx="15" cy="11" r="1.5"/>
+    <path d="M9 16h6"/>
+    <path d="M10 18v3"/>
+    <path d="M14 18v3"/>
+    <path d="M12 16v2"/>
+  </svg>
+`,
+
+    title:'قوانين العصابات',
+
+    desc:'جميع القوانين المتعلقة بالعصابات ',
+
+    num:'02',
+
+    items:[
+      '✦ممنوع نهائياً اى اتحاد او تحالف بين العصابات فى اي فايت او اي عداوه بين طرفين او ضد الشرطه.',
+      '✦لا يمكن بداء عداوة عصابات إلا بموافقة بوسات العصابتين او نوابهم داخل الرول عدا ذالك تبقى العداوه شخصيه او فرديه يجب أن تكون العداوه مصوره بشكل كامل من البدايه للنهايه (لن تقبل اي ادله للعداوه لا توضح الحاله من بدايتها).',
+      '✦في حال وجود اى فايت داخل لوس يمكن للشرطه التدخل فى الفايت والقاء القبض على المجرمين او المشاركين فى حالة اطلاق النار (ما عدا فايتات المقرات).',
+      '✦عدد العصابه يجب ان لا يقل العدد عن5 لاعب ولا يزيد عن 15 لاعب.',
+      '✦على جميع العصابات عدم بناء عداوه صريحه على لون البس الا في حال اثبات وجود ضرر واقعي على العصابه من استخدام اللون او اللبس.',
+      '✦في حال طرد عضو او اضافة عضو يجب ابلاغ الاداره بشكل مباشر تجنبا للمخالفه.',
+      '✦في حال تغيير اي معلومه في بيانات العصابه سوا موقع لبس شعار االخ يجب ابلاغ الاداره في مهله لا تتجاوز يوم.',
+      '✦لا يحق لاي مجموعه ممارسة نشاطها كعصابه (مثل العداوات مع العصابات - تحديد موقع - الخ ,,, ) في حال لم يتم قبولها او لم تسجل كعصابه رسميه.',
+      '✦ يُمنع منعًا باتًا التجريح أو الإهانات أو الشخصنة تجاه أي عصابة أو فرد، سواء بالكلام أو التصرفات داخل الرول او خارجه. الاحترام مطلوب حتى في العداوات.',
+      '✦على كل عصابه الاحتفاظ بسجل كامل للعداوت في روم مخصص.',
+      '✦لوحظ كثيرا بين العصابات كتابة بيانات العداوت في الديسكورد للاعضاء وهذا ممنوع تماما ويعد اخذ معلومات من خارج الرول.',
+      '✦في حال بدات عداوه بين عصابتين للعصابتين مهله قدرها يوم واحد لرفع بيانات العداوه للاداره (سبب العداوه و الدليل).',
+      '✦كل عضو في العصابة يمثل العصابة بأكملها. ( انتقي افرادك بعناية ولا تكن سبب في اقفال عصابتك ).',
+      '✦ في حال شخص دخل حارتك بامكانك اسقاطه وتلويته بعد تنبيهه بمغادرة الموقع و تنبيهه انه موقع خطر في حال عدم الانصياع يحق للعصابه قتله ( في حال السبب كان غير منطقي في قتله الشخص راح يتم محاسبه العصابه ).',
+      '✦يجب ان تتاكد من الاعضاء في العصابه المعاديه قبل ان تبدا حربك معهم.',
+      '✦المسؤول أمام الاداره هو البوس ونائبه و نائب الكوبوس عن جميع أمور العصابه فقط.',
+      '✦اي عداوه تغلق رقابيا لا يمكن اعادة فتحها من قبل افراد العصابه.',
+      '✦يمنع تماما ذكر او مناقشة اي معلومات او قرارات رقابيه تخص العصابات في البثوث او خارج التذاكر.',
+      '✦في حال استبعاد اى عصابه داخل الرول عن نظام العصابات سيتم الغاء التقديم في الديسكورد وتفكيك العصابه رسمياً.',
+      '✦يمنع انشاء عصابه ثانيه فرعيه للعصابه او احتياطيه او مجموعه افراد تكون مساعده للعصابه الرئيسيه.',
+      '✦في حال خروج عضو من عصابه لا يحق له دخول عصابه اخرى الا بعد مرور 10 ايام على  خروجه.',
+      '✦في حال الفايتات الرسميه بين عصابتين يجب على جميع اعضاه العصابتين تشغيل برنامج لتصوير الفايت كامل بدون اي تقطيع.',
+      '✦العداوة تبداء بنصب على شخص او اطلاق النار على البعض اذا كنت الشخص الناصب وشخص الثاني طلق عليك وقتلته لايحق لك تلويته بل يحق للمنصوب عليه اذا لوتك هنا يبدي التلويت من الطرفين.',
+      '✦ التلويت اما ب عداوة او فل جزيرة او الفايتات الرسمية او في سيناريو وباذن اكبر راس في السيناريو.',
+      '✦عدد المجرمين في السرقات في الدسكورد.',
+      '✦ تنبيه مهم: جميع القوانين قابلة لتعديل كذالك  يحق للرقابة التعامل مع اي شخص او موقف او مخالفة حتى في حال عدم وجود القانون بشكل صريح.(القوانين فقط مقدمة لطريقة اللعب)',
+    ]
+  },
+
+  {
+icon: `
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 3a8 8 0 0 0-8 8c0 3.2 1.9 6 4.7 7.3V21h6.6v-2.7C17.1 17 20 14.2 20 11a8 8 0 0 0-8-8z"/>
+    <circle cx="9" cy="11" r="1.5"/>
+    <circle cx="15" cy="11" r="1.5"/>
+    <path d="M9 16h6"/>
+    <path d="M10 18v3"/>
+    <path d="M14 18v3"/>
+    <path d="M12 16v2"/>
+  </svg>
+`,
+
+    title:'قوانين الاجرام',
+
+    desc:'جميع القوانين المتعلقة بالإجرام ',
+
+    num:'03',
+
+    items:[
+      '✦ممنوع ملاحقة العساكر بغرض المضايقات أو التدخل في عملهم أو الترصد لهم وبناء عداوة معهم..',
+      '✦يمنع منعاً باتاً التحلل أو الخروج من المدينة إلا بعد مرور 15 دقيقة من انتهاء السيناريو.',
+      '✦العداوة: يمنع تكوين عداوة لأسباب تافهة مثل: مشادة كلامية وضرب بالأيدي حادث بسيط بالسيارة  خطف بدون سبب منطقي في هذه الحالات يجب التوجه لمركز الشرطة ورفع شكوى أو بلاغ واستكمال الرول بلاي.',
+      '✦يمنع طلب الخدمات المتاحة بالجوال (مثل التاكسي أو الإسعاف) بقصد الخطف أو القتل أو السرقة.',
+      '✦في حال رفع شخص عليك سلاحاً (ناري أو أبيض) يجب عليك الاستسلام الكامل. حتى إذا كان هناك مخالفة، يجب عليك مجاراة السيناريو حتى النهاية.',
+      '✦يمنع خطف أي شخص في مكان عام أو مزدحم؛ يجب سحب الهدف إلى مكان خالٍ أولاً.',
+      '✦يمنع خطف أو أخذ رهينة من بين معارفك (سواء كانوا أصدقاء أو من نفس العصابة). يجب أن تكون الرهينة شخصاً غريباً عنك.',
+      '✦ممنوع منعاً باتاً قتل الأشخاص في حال كانوا ينفذون الأوامر.',
+      '✦إذا أسقطت عسكري أو مجرم في سيناريو (سرقة أو غيره) يمنع نقله للمستشفى بعد انتهاء الفايت إلا إذا كان الشخص من عصابتك أو مجموعتك.',
+      '✦عند تبادل إطلاق النار بين طرفين يمنع حمل شخص بيدك أثناء الاشتباك، يجب إنزاله أولاً ثم يمكنك المشاركة في القتال.',
+      '✦إذا تمت مداهمة حارة عصابة من قبل الشرطة، يحق للعصابة سرقة العساكر داخل الحارة.',
+      '✦العداوة والسرقة يحق لك سرقة مواطن فقط إذا كانت هناك عداوة واضحة.',
+      '✦يمنع تكوين عداوة لأسباب تافهة (مثل مشادة كلامية أو حادث سيارة بسيط)..',
+      '✦في حال حدوث مشكلة، يجب رفع بلاغ للشرطة واستكمال الرول بلاي.',
+      '✦يحق سرقة العسكري فقط في الحالات التالية: إذا كانت هناك عداوة سابقة (بشرط ألا تكون بسبب قيام العسكري بعمله)).',
+      '✦يمنع الخطف في الأماكن العامة أو أمام العلن أو في مواقع الوظائف (المستشفى، الحجز، النفايات، إلخ).',
+      '✦ممنوع منعاً باتاً: السرقة العشوائية.',
+      '✦أخذ رهائن من المعارف أو الأصدقاء (يجب أن تكون رهينة غريبة).',
+      '✦قتل الأشخاص أثناء تنفيذهم للأوامر.',
+      '✦🧠 النسيان وإنهاء العداوة (جاري تحديثها).',
+      '✦يُمنع منعًا باتًا العودة إلى الحالة بعد إسقاطك، ويشمل ذلك جميع الحالات دون استثناء، بما فيها الحالات المفتوحة.',
+      '✦ تنبيه مهم: جميع القوانين قابلة لتعديل كذالك  يحق للرقابة التعامل مع اي شخص او موقف او مخالفة حتى في حال عدم وجود القانون بشكل صريح.(القوانين فقط مقدمة لطريقة اللعب)',
+    ]
+  },
+
+
+  {
+    icon:`
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="9" cy="7" r="4"/>
+        <path d="M2 21v-2a4 4 0 014-4h6a4 4 0 014 4v2"/>
+        <path d="M17 3.13a4 4 0 010 7.75M22 21v-2a4 4 0 00-3-3.87"/>
+      </svg>
+    `,
+
+    title:'قوانين الشرطة',
+
+    desc:'جميع القوانين المتعلقه بل الشرطة',
+
+    num:'04',
+
+    items:[
+      '✦يتم طلب المداهمة من خلال الضباط وما فوق ولا يمكن مداهمة أي شخص الا من خلال أمر تنفيذ من المحكمة.',
+      '✦في حال حدوث أي مخالفه سواء بـالرول بلاي او قوانين الشرطة سوف يتم محاسبة مسؤول الحالة فقط ويتحمل مسؤولية الأفراد.',
+      '✦يجب على العسكري عدم إخراج السلاح الا بعد ان يقوم المجرم بأخرج اي سلاحه .',
+      '✦يجب على العسكري استخدام نفس فئة الأسلحة "خفيف, ثقيل" المستخدمة من المجرم بـ استثناء أوامر القيادة..',
+      '✦على جميع العساكر والأفراد عدم استخدام الأسلحة النارية في حال استخدام المجرم سلاح أبيض الا في حالة مهاجمة المجرم للعسكري. .',
+      '✦في حال التفرقة بين المواطنين في التعامل سواء التفاوض مع مجرم او التعامل مع مسعف او مع مواطن بسوء سيتم تحويل الموضوع رقابياً وأن يتم التعامل الكامل بالرول وفي حدوده فقط في حال تم القاء القبض على المجرم يتم إعطائه التهم الأساسية فقط ولا يتم إضافة أي تهمة أخرى.',
+      '✦يجب أن يكون رجل الأمن مهذب تجاه المواطنين ومع زملائهم , يجب أن يكون لبقاً في أداء واجبه، متحكم في اعصابه ويتحمل أقصى درجات الصبر والتقدير. حتى في مواجهة الاستفزاز الشديد. لا يجوز لهم استخدام لغة أو إيماءات بذيئة أو عنيفة تجاه المواطنين أو زملائه في شرطة اورا.',
+      '✦لا يجوز لرجال الأمن ارتكاب أي عمل من أعمال الفساد. وعليهم أيضا معارضة ومكافحة كل هذه الأعمال بصرامة و الإبلاغ عنها.',
+      '✦يجب على رجال الأمن تطبيق القانون ، في أدائهم لواجبهم ، احترام وحماية كرامة الإنسان والحفاظ على حقوق الإنسان لجميع الأشخاص ودعمها.',
+      '✦لا يجوز لرجال الأمن استخدام القوة الإجبارية إلا عند الضرورة القصوى او عند الاعتداء عليه بالضرر ويكون بالقدر المطلوب لأداء واجبهم.',
+      '✦يمكن لرجل الأمن ممارسة عمله و تطبيق القانون كلما اقتضت الظروف ذلك ، سواء أكان بالزي الرسمي أو حتى وهو خارج العمل.',
+      '✦يجب الحفاظ على سرية الأمور العسكرية ذات الطبيعة السرية التي في متناول رجل الأمن عند تطبيق القانون ، ما لم يتطلب أداء الواجب أو متطلبات العدالة خلاف ذلك بشكل صارم.',
+      '✦يجب على رجال الأمن ضمان الحماية الكاملة لصحة الأشخاص المحتجزين لديهم ،و يجب عليهم اتخاذ إجراءات فورية لتأمين العناية الطبية عند الاقتضاء.',
+      '✦تعتبر الخيانة او التمرد انهيارًا خطيرًا في الانضباط والنظام داخل حكومة اورا. لذلك، فإن أي رجل امن يكون متمردًا تجاه حكومة اورا يخضع لإجراءات تأديبية قد تؤدي إلى إنهاء الخدمة أو الإعدام بالرصاص.',
+      '✦قد يتم إبطال أي أمر او قرار عسكري في حالة الطوارئ. يقوم رجال الأمن الذين يكسروا أمرًا عسكرياً سابقًا بإبلاغ الضابط المسؤول عن سبب تصرفه على الفور.',
+      '✦ستظل المسؤولية عن جميع الإجراءات الحكيمة والمعقولة اللازمة للامتثال للأوامر على عاتق الرئيس الذي أصدر الأمر. تظل المساءلة عن جميع الإجراءات المتخذة امتثالاً للأوامر مسؤولية الشخص الذي يتخذ مثل هذا الإجراء.',
+      '✦في مكان وقوع أي حادث ، يكون رجل الأمن المكلف من قبل مركز العمليات هو المسؤول حتى يتم الانتهاء من الحالة بتوجيه من مركز العمليات او ضابط آخر أعلى رتبة.',
+      '✦إساءة استخدام الوظيفة أثناء حرمانهم من العمل او إيقاف خدماتهم مؤقتاً ، لن يرتدي رجال الأمن الزي الرسمي ولن يمثلوا أنفسهم بصفة رسمية كموظف في شرطة اورا او يتمتع بصلاحياتها يحظر على رجال الأمن استخدام مناصبهم الرسمية أو بطاقة الهوية الرسمية أو شارتهم لتحقيق منفعة شخصية أو مالية أو  كوسيلة للحصول على امتيازات غير متاحة لهم بطريقة أخرى ، أو لتجنب عواقب الأعمال غير القانونية. لا يجوز لرجال الأمن أن يعير بطاقة هويته أو شارته إلى شخص آخر ، أو السماح بتصويرها أو إعادة إنتاجها دون موافقة قائد الشرطة أو من ينوب عنه.',
+      '✦لا يجوز لرجل الأمن التوقيع على عريضة او عقد باسم او لقطاع الشرطة ، دون إذن من قائد الشرطة أو من ينوب عنه.',
+      '✦لا يجوز لرجل الأمن في اورا بالتغيب عن العمل لأكثر من يومين دون الحصول على إذن موافق عليه بشكل صحيح من قبل القيادات ويحق للقيادة بإقرار فصله ولا يحق له المطالبة بحقوقه المالية ( نهاية خدمه ونحو ذلك ).',
+      '✦يجب على رجل الأمن أن يكون مجهزًا بالعتاد الكامل قبل مغادرته مركز الشرطة وعلى دراية بالمعلومات المطلوبة لأداء الواجب بشكل صحيح حتى يتمكن من ذلك على الفور يتولى واجباته..',
+      '✦ الأدلة / الممتلكات التي تم العثور عليها واستعادتها - ستتم معالجة الممتلكات التي تم استلامها كدليل فيما يتعلق بالتحقيقات أو التي تقع في عهدة الشرطة لأي سبب آخر ، وفقًا للإجراءات المعمول بها. لا يجوز لرجل الأمن أن يستخدمها أو يستخرجها أو العبث بها أو إتلافها عن طريق الإهمال أو تحريكها من مكانها أو بأي طريقة أخرى كانت.',
+      '✦المظهر الشخصي , سيحافظ رجال الأمن على مظهر أنيق وحسن المظهر وسيقومون بارتداء زيهم المتسق مع المنشأة التابعة لسياسة الحكومة وإجراءاتها.',
+      '✦إهمال الواجب.',
+      '✦يعتبر إخفاق رجل الأمن في اتخاذ الإجراء المناسب ، سواء أثناء العمل أو خارجه ، عند وقوع جريمة أو اضطراب أو حالة أخرى تستحق الاهتمام الإداري من قبل الشرطة أو الإدارة ، بمثابة إهمال للواجب.',
+      '✦سيشرف الضباط على النشاط اثناء أداء رجل الأمن عمله لضمان الامتثال لجميع سياسات والإجراءات اللازمة.',
+      '✦استخدام المخدرات.',
+      '✦لن يستخدم رجل الأمن أي مادة خاضعة للرقابة أو مخدرة أو مهلوسة ، إلا بما يتوافق مع السياسة المعمول بها. وسيتم معاقبة رجل الأمن بأشد العقوبات وقد تصل الى الفصل في حال وجد معه شيئاً منها.',
+      '✦أ. لن يسيء رجال الشرطة معاملة المحتجزين لديه. سوف يتعاملون مع الأشخاص وفقًا للإجراءات المعمول بها.',
+      '✦ب. لا يجوز لموظف الشرطة في اورا، دون سلطة مناسبة ، الإفراج عن أي سجين من مسؤوليته ، أو الإهمال أو تركه.',
+      '✦حقوق المواطن اثناء القاء القبض عليه.',
+      '✦[ تم القبض عليك من قبل شرطة اورا يجب عليك التزام الصمت الى حين وضعك في غرفة التحقيق او الزنزانة. أي شيء ستقوله يمكن ان يستخدم ضدك في التحقيق. لديك الحق في طلب محاميك اذا كان متوفر. ]',
+      '✦هذه القوانين قابله للتعديل من قبل إدارة شرطة اورا بأي وقت.',
+      '✦ تنبيه مهم: هذه القوانين قابله للتعديل من قبل إدارة شرطة اورا بأي وقت كذالك يحق للرقابة التعامل مع اي شخص او موقف او مخالفة حتى في حال عدم وجود القانون بشكل صريح.(القوانين فقط مقدمة لطريقة اللعب)',
+    ]
+  },
+
+
+  {
+    icon:`
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6z"/>
+      </svg>
+    `,
+
+    title:'قوانين الاسعاف',
+
+    desc:'جميع القوانين المتعلقة بالاسعاف',
+
+    num:'05',
+
+    items:[
+      '✦يمنع على المسعفين منعا باتا بناء عداوات مع المواطنين.',
+      '✦يمنع على المسعفين منعا باتا القيام بأي نشاط اجرامي.',
+      '✦يمنع على المسعفين منعا باتا حيازة أي نوع من الأسلحة (البيضاء أو النارية).',
+      '✦يمنع التقديم للإسعاف بالشخصية الإجرامية.',
+      '✦يمنع على المسعفين العمل في أي أعمال أخرى.',
+      '✦يمنع على المسعفين منعا باتا تسريب أي معلومات تخص أي قطاع حكومي لأي شخص.',
+      '✦يمنع على المسعفين التوجه إلى حالات طلق نار بدون إبلاغ الشرطة (يسمح لهم الاقتراب من الموقع بحيث يفصل بينهم مربع سكني على الاقل عن موقع إطلاق النار).',
+      '✦يمنع على المسعفين نقل شخص في سيارة الإسعاف أو استخدام سيارة الإسعاف بشكل شخصي أو لتوصيل المواطنين.',
+      '✦يمنع على المسعفين علاج الحالات الجنائيه بدون إذن من العساكر.',
+      '✦يمنع إعطاء المواطنين أي عتاد يخص الإسعاف.',
+      '✦يمنع قيادة الهليكوبتر في حال لم تكن معك شهادة الهليكوبتر.',
+      '✦يمنع قيادة الهليكوبتر في حال لم تكن معك شهادة الهليكوبتر.',
+      '✦يجب احترام موظفي الحكومة وجميع المواطنين والتقليل من أي شخص يعرضك للفصل الفوري.',
+      '✦يجب عليك احترام جميع الرتب الأعلى منك والاستماع لهم وتنفيذ التعليمات الموجهة لك.',
+      '✦يجب إبلاغ مركز العمليات بتحركاتك الميدانية واخذ الإذن عليها.',
+      '✦يمنع الذهاب الى السجن من غير طلب وحدة عسكرية.',
+      '✦يمنع التعديل على السيارة من غير اذن المسؤول ويجب أن تكون التعديلات خفيفة لا تغير من مظهر السيارة.',
+      '✦لا يسمح لمركز العمليات الخروج من المستشفى في حال كان هناك أكثر من 3 مسعفين.',
+      '✦يمنع منعًا باتًا تسجيل خروجك والتوجه إلى أي مكان آخر أو قضاء الوقت بدون إجازة داخلية أو إذن من مسؤول.',
+      '✦يمنع منعًا باتًا نقل المصابين في أي مركبة غير المركبات المخصصة للإسعاف.',
+      '✦في حال لديك إجازة داخلية يجب وضع جميع أغراض الإسعاف في الخزنة الخاصة.',
+      '✦الالتزام بالزي الرسمي المحدد لكل رتبة.',
+      '✦في حال اعتدائك على أحد الزملاء سيصدر بحقك إنذار مباشر وقد تصل للفصل الفوري.',
+      '✦في حال وصول الإنذارات إلى 3 سيتم فصلك .',
+      '✦إهمال المصابين وعدم التوجه للبلاغات سوف يعرضك للمحاسبة الفورية.',
+      '✦في حال تم سرقة أي عدة من معداتك الإسعافية يجب التوجه إلى المسؤولين وتبليغهم وإلا ستحاسب.',
+      '✦يسمح التواجد في المستشفى في حال ما كانت لديك حالة وتستطيع أيضًا التوجه كوحدة حرة بعد أخذ الإذن من العمليات.',
+      '✦اقصى مدة استراحه او غفوه هي عشر دقائق ويجب تسجيل خروجك اثناء الاستراحه او الغفوه اذا كانت الغفوه اكثر من عشر دقائق فيجب عليك الخروج من السيرفر.',
+      '✦ممنوع منعًا باتًا التلميح للترقية بأي شكل كان سواء باستفسار أو أي تلميح بسيط وعقوبتها خصم نقاط مع تأخير الترقية.',
+      '✦يجب عرض التقارير الطبية على المسؤولين قبل تسليمها يمنع على المسعفين الوشم بجميع أنواعه أو لبس الأساور أو الخواتم.',
+      '✦يجب المحافظة على المركبات الإسعافية نظيفة ومعقمة لسلامة المرضى وسيتم محاسبة كل من يخالف ذلك.',
+      '✦أقصى مدة للإجازة الداخلية هي 4 أيام ويجب وضع جميع الأغراض التي تخص الإسعاف في الخزنة الخاصة بك في المستشفى (سيتم الفصل في حال مخالفة ذلك).',
+      '✦غياب أكثر من ثلاث أيام متتالية بدون سبب قد يعرضك للإنذار أو للفصل إذا تكرر.',
+      '✦يجب عليك اختيار تخصص خاص بك في حال وصلت إلى رتبة دكتور.',
+      '✦ تنبيه مهم: هذه القوانين قابله للتعديل من قبل إدارة الاسعاف اورا بأي وقت كذالك يحق للرقابة التعامل مع اي شخص او موقف او مخالفة حتى في حال عدم وجود القانون بشكل صريح.(القوانين فقط مقدمة لطريقة اللعب)',
+    ]
+  },
+
+
+  {
+    icon:`
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11z"/>
+      </svg>
+    `,
+
+    title:'قوانين العدل',
+
+    desc:'جميع القوانين المتعلقة بالعدل',
+
+    num:'06',
+
+    items:[
+      'شغالين عليها',
+    ]
+  },
+
+
+  {
+    icon:`
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M5 17h14M5 17a2 2 0 01-2-2v-2l2-5h10l2 5v2a2 2 0 01-2 2M7 17v2M17 17v2"/>
+        <circle cx="7.5" cy="14.5" r="1"/>
+        <circle cx="16.5" cy="14.5" r="1"/>
+      </svg>
+    `,
+
+    title:'قوانين الوورنات',
+
+    desc:'جميع القوانين المتعلقة بالوورنات ',
+
+    num:'07',
+
+    items:[
+      '|| للتنبيه الورنات ليست العقوبه الوحيده للمخالفين يوجد بعض المخالفات مستثناء من الورنات ||',
+      '1 >> وارن >> بدون اي اجراء.',
+      '2 >> وارن >> باند 12 ساعة.',
+      '3 >> وارن >> بدون اي اجراء.',
+      '4 >> وارن >> باند 24 ساعة.',
+      '5 >> وارن >> بدون اي اجراء.',
+      '6 >> وارن >> باند 3 ايام.',
+      '7 >> وارن >> بدون اي اجراء.',
+      '8 >> وارن >> باند 7 ايام.',
+      '9 >> وارن >> بدون اب اجراء.',
+      '10 >> وارن >> باند 10 ايام.',
+      '11 >> وارن >> بدون اي اجراء.',
+      '12 >> وارن >> باند اسبوعين.',
+      '13 >> وارن >> بدون اي اجراء.',
+      '14 >> وارن >> باند 3 اسابيع.',
+      '15 >> باند ثلاث أشهر او نهائي.',
+    ]
+  },
+];
+
+
+/* =====================================================
+   CREATE RULES
+===================================================== */
+
+const list = document.getElementById('rulesList');
+
+RULES.forEach((r) => {
+
+  const item = document.createElement('div');
+
+  item.className = 'rule-item';
+
+  item.innerHTML = `
+
+    <div class="rule-head">
+
+      <svg
+        class="chev"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2.5"
+      >
+        <path d="M6 9l6 6 6-6"/>
+      </svg>
+
+      <div class="r-icon">
+        ${r.icon}
+      </div>
+
+      <div class="r-text">
+
+        <div class="r-title">
+          ${r.title}
+        </div>
+
+        <div class="r-desc">
+          ${r.desc}
+        </div>
+
+      </div>
+
+      <div class="r-num">
+        ${r.num}
+      </div>
+
+    </div>
+
+    <div class="rule-body">
+
+      <div class="rule-body-inner">
+
+        <ul>
+          ${r.items.map(t => `<li>${t}</li>`).join('')}
+        </ul>
+
+      </div>
+
+    </div>
+  `;
+
+
+  item
+    .querySelector('.rule-head')
+    .addEventListener('click', () => {
+
+      item.classList.toggle('open');
+
+    });
+
+
+  list.appendChild(item);
+
+});
+
+
+/* =====================================================
+   NAV ACTIVE
+===================================================== */
+
+const navLinks = document.querySelectorAll('nav.links a');
+
+navLinks.forEach(link => {
+
+  link.addEventListener('click', function(){
+
+    /*
+      الديسكورد رابط خارجي،
+      لذلك لا نغير الـ Active عند الضغط عليه.
+    */
+
+    if(this.target === '_blank'){
+      return;
+    }
+
+    /*
+      إزالة اللون الأزرق من جميع الأزرار
+    */
+
+    navLinks.forEach(item => {
+      item.classList.remove('active');
+    });
+
+    /*
+      إعطاء اللون الأزرق للزر المضغوط
+    */
+
+    this.classList.add('active');
+
+  });
+
+});
+
+
+/* =====================================================
+   ACTIVE أثناء الضغط على بطاقات الصفحة
+===================================================== */
+
+const homeLink = document.querySelector('nav.links a[href="#home"]');
+const rulesLink = document.querySelector('nav.links a[href="#rules"]');
+const creatorsLink = document.querySelector('nav.links a[href="#creators"]');
+
+const quickRules = document.querySelector('.qcard[href="#rules"]');
+const quickCreators = document.querySelector('.qcard[href="#creators"]');
+
+
+if(quickRules){
+
+  quickRules.addEventListener('click', () => {
+
+    navLinks.forEach(item => {
+      item.classList.remove('active');
+    });
+
+    rulesLink.classList.add('active');
+
+  });
+
+}
+
+
+if(quickCreators){
+
+  quickCreators.addEventListener('click', () => {
+
+    navLinks.forEach(item => {
+      item.classList.remove('active');
+    });
+
+    creatorsLink.classList.add('active');
+
+  });
+
+}
+
+
+/* =====================================================
+   عند الرجوع للرئيسية
+===================================================== */
+
+if(homeLink){
+
+  homeLink.addEventListener('click', () => {
+
+    navLinks.forEach(item => {
+      item.classList.remove('active');
+    });
+
+    homeLink.classList.add('active');
+
+  });
+
+}
+
+
+/* =====================================================
+   تغيير الـ ACTIVE تلقائياً أثناء النزول بالصفحة
+===================================================== */
+
+const homeSection = document.getElementById('home');
+const rulesSection = document.getElementById('rules');
+const creatorsSection = document.getElementById('creators');
+
+const observer = new IntersectionObserver(
+  (entries) => {
+
+    entries.forEach(entry => {
+
+      if(!entry.isIntersecting){
+        return;
+      }
+
+      navLinks.forEach(item => {
+        item.classList.remove('active');
+      });
+
+
+      if(entry.target === homeSection){
+
+        homeLink.classList.add('active');
+
+      }
+
+      else if(entry.target === rulesSection){
+
+        rulesLink.classList.add('active');
+
+      }
+
+      else if(entry.target === creatorsSection){
+
+        creatorsLink.classList.add('active');
+
+      }
+
+    });
+
+  },
+  {
+    threshold:0.25
+  }
+);
+
+
+if(homeSection){
+  observer.observe(homeSection);
+}
+
+if(rulesSection){
+  observer.observe(rulesSection);
+}
+
+if(creatorsSection){
+  observer.observe(creatorsSection);
+}
+
+</script>
+
+</body>
+</html>
